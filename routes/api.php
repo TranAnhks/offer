@@ -20,4 +20,5 @@ use Illuminate\Http\Request;
 
 Route::group(['prefix' => 'v1', 'namespace' => 'Api\V1'], function() {
     require (base_path('routes/admin.php'));
+    require (base_path('routes/user.php'));
 });

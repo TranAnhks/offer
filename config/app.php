@@ -163,7 +163,7 @@ return [
         /*
          * Package Service Providers...
          */
-
+        SMartins\PassportMultiauth\Providers\MultiauthServiceProvider::class,
         /*
          * Application Service Providers...
          */

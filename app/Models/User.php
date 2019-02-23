@@ -2,18 +2,22 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
- 
+use SMartins\PassportMultiauth\HasMultiAuthApiTokens;
 
-class User extends Model
+class User extends Authenticatable
 {
-	use Notifiable;
+    use Notifiable, HasMultiAuthApiTokens;
 
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'account', 'password', 'status'
     ];
+
+    public function findForPassport($account)
+    {
+        return $this->where('account', $account)->first();
+    }
 
     /**
      * The attributes that should be hidden for arrays.
